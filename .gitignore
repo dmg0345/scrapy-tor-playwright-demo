@@ -1,0 +1,19 @@
+# Ignore path to dependencies.
+/other/powershell_scripts
+# Ignore Python cache folders.
+/**/__pycache__
+# Ignore Pytest cache folders.
+/**/.pytest_cache
+# Ignore Sphinx build and documentation documentation.
+/doc/.sphinx_build
+/doc/.output
+# Ignore coverage and test results artifacts.
+/tests/.test_results
+/tests/.coverage
+# Ignore all logs.
+/**/*.log
+# Ignore distributables.
+dist
+
+# Ignore local storage for items.
+/src/scrapy_tor_playwright_demo/pipelines/fs/**/*

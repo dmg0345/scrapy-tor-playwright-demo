@@ -1,0 +1,40 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: 
+    //    - https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            // Configuration that runs when launching a file.
+            "name": "Python: Launch",
+            "type": "python",
+            "cwd": "${workspaceFolder}",
+            "python": "${command:python.interpreterPath}",
+            "pythonArgs": [],
+            "env": {},
+            "request": "launch",
+            "stopOnEntry": true,
+            "program": "${workspaceFolder}/src/scrapy_tor_playwright_demo/main.py",
+            "args": [],
+            "console": "integratedTerminal",
+            "justMyCode": false,
+        },
+        {
+            // Configuration that runs when running a test.
+            "name": "Python: Debug Tests (No Coverage)",
+            "type": "python",
+            "cwd": "${workspaceFolder}",
+            "python": "${command:python.interpreterPath}",
+            "pythonArgs": [],
+            "env": {"PYTEST_ADDOPTS": "--no-cov"},
+            "request": "launch",
+            "purpose": ["debug-test"],
+            "stopOnEntry": false,
+            "program": "${file}",
+            "args": [],
+            "console": "integratedTerminal",
+            "justMyCode": false,
+        }
+    ]
+}

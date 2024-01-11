@@ -1,0 +1,134 @@
+# This is the Docker Compose file used with Visual Studio Code.
+# For details, refer to: 
+#   - https://docs.docker.com/compose/compose-file/
+#   - https://github.com/microsoft/vscode-dev-containers/tree/main/container-templates/docker-compose/.devcontainer
+# For TOR based rotating proxies:
+#   - https://registry.hub.docker.com/r/pickapp/tor-proxy
+#   - https://datawookie.dev/blog/2021/06/scrapy-rotating-tor-proxy/
+
+## Other ###############################################################################################################
+version: '3.9'
+
+## Services ############################################################################################################
+services:
+  vscode:
+    # The 'vscode' service is built from the Dockerfile.
+    image: dmg00345/scrapy_tor_playwright_demo:latest
+    container_name: scrapy_tor_playwright_demo
+    build:
+      context: ..
+      # The path to the DockerFile, relative to the root folder of the workspace.
+      dockerfile: .devcontainer/DockerFile
+
+    volumes:
+      # Map the volume repository to the workspace, this is 'workspaceFolder' in 'devcontainer.json' file.
+      # Set the consistency to 'cached' as that is more suitable for development (high I/O frequency).
+      - vscode:/workspace:cached
+
+    env_file:
+      # Github environment variables such as username and email.
+      - ../../!local/other-files/github/github.env
+
+    # Override default command to an infinite loop, this causes things not to shut down when the process ends.
+    command: /bin/sh -c "while sleep 1000; do :; done"
+
+  tor-proxy-pool-zero:
+    container_name: tor-proxy-pool-zero
+    image: pickapp/tor-proxy:latest
+    ports:
+      - 9990:8888
+    environment:
+      - IP_CHANGE_INTERVAL=15
+    restart: always
+
+  tor-proxy-pool-one:
+    container_name: tor-proxy-pool-one
+    image: pickapp/tor-proxy:latest
+    ports:
+      - 9991:8888
+    environment:
+      - IP_CHANGE_INTERVAL=15
+    restart: always
+
+  tor-proxy-pool-two:
+    container_name: tor-proxy-pool-two
+    image: pickapp/tor-proxy:latest
+    ports:
+      - 9992:8888
+    environment:
+      - IP_CHANGE_INTERVAL=15
+    restart: always
+
+  tor-proxy-pool-three:
+    container_name: tor-proxy-pool-three
+    image: pickapp/tor-proxy:latest
+    ports:
+      - 9993:8888
+    environment:
+      - IP_CHANGE_INTERVAL=15
+    restart: always
+
+  tor-proxy-pool-four:
+    container_name: tor-proxy-pool-four
+    image: pickapp/tor-proxy:latest
+    ports:
+      - 9994:8888
+    environment:
+      - IP_CHANGE_INTERVAL=15
+    restart: always
+
+  tor-proxy-pool-five:
+    container_name: tor-proxy-pool-five
+    image: pickapp/tor-proxy:latest
+    ports:
+      - 9995:8888
+    environment:
+      - IP_CHANGE_INTERVAL=15
+    restart: always
+
+  tor-proxy-pool-six:
+    container_name: tor-proxy-pool-six
+    image: pickapp/tor-proxy:latest
+    ports:
+      - 9996:8888
+    environment:
+      - IP_CHANGE_INTERVAL=15
+    restart: always
+
+  tor-proxy-pool-seven:
+    container_name: tor-proxy-pool-seven
+    image: pickapp/tor-proxy:latest
+    ports:
+      - 9997:8888
+    environment:
+      - IP_CHANGE_INTERVAL=15
+    restart: always
+
+  tor-proxy-pool-eight:
+    container_name: tor-proxy-pool-eight
+    image: pickapp/tor-proxy:latest
+    ports:
+      - 9998:8888
+    environment:
+      - IP_CHANGE_INTERVAL=15
+    restart: always
+
+  tor-proxy-pool-nine:
+    container_name: tor-proxy-pool-nine
+    image: pickapp/tor-proxy:latest
+    ports:
+      - 9999:8888
+    environment:
+      - IP_CHANGE_INTERVAL=15
+    restart: always
+
+## Volumes #############################################################################################################
+volumes:
+  # Volume with the repository contents.
+  vscode:
+
+## Configs #############################################################################################################
+
+## Secrets #############################################################################################################
+
+## Networks ############################################################################################################
