@@ -26,14 +26,14 @@ def collect_folders(path: str) -> list[str]:
         for name in dirs:
             if name not in ["__pycache__", ".pytest_cache"]:
                 final_dirs.append(os.path.normpath(os.path.realpath(os.path.join(root, name))))
-                print(final_dirs[-1])
 
     return final_dirs
 
 
 # If extensions (or modules to document with autodoc) are in another directory, add these directories to sys.path here.
-sys.path.extend(collect_folders(r"../src"))
-sys.path.extend(collect_folders(r"../tests"))
+root = os.path.normpath(os.path.join(os.path.dirname(__file__), ".."))
+sys.path.extend(collect_folders(os.path.join(root, "src")))
+sys.path.extend(collect_folders(os.path.join(root, "tests")))
 
 ## Project information #################################################################################################
 # Project name.
