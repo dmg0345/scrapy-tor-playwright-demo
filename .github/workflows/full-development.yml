@@ -11,7 +11,7 @@ name: (Development) - Full
 run-name: "#${{ github.run_number }}: ${{ github.event.head_commit.message }}"
 jobs:
   full:
-    uses: dmg0345/scrapy-tor-playwright-demo/.github/workflows/reusable-full.yml@develop
+    uses: dmg0345/scrapy-tor-playwright-demo/.github/workflows/reusable-full.yml@master
     secrets:
       netlify_pat: ${{ secrets.NETLIFY_PAT }}
       netlify_site_id: ${{ secrets.NETLIFY_SITE_ID }}
